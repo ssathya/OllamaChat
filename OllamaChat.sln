@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OllamaChat", "OllamaChat\OllamaChat.csproj", "{44339967-6077-45D7-963F-064D3666DEF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44339967-6077-45D7-963F-064D3666DEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44339967-6077-45D7-963F-064D3666DEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44339967-6077-45D7-963F-064D3666DEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44339967-6077-45D7-963F-064D3666DEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F547E917-58AD-40AB-9FE2-21C31F56E731}
+	EndGlobalSection
+EndGlobal

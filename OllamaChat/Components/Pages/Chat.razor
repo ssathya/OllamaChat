@@ -1,0 +1,41 @@
+﻿@page "/chat"
+@rendermode InteractiveServer
+<PageTitle>Chat</PageTitle>
+
+<Card>
+    <CardHeader>Chat History</CardHeader>
+    <CardBody TextAlignment="TextAlignment.Justified">
+        <Div Overflow="Overflow.Auto" Padding="Padding.Is3" Margin="Margin.Is3.FromBottom.Is0.FromBottom.OnDesktop.Is3.FromEnd.OnDesktop" Background="Background.Light" Style="max-height: 400px;">
+            @((MarkupString)@responseToDisplay)
+        </Div>
+    </CardBody>
+</Card>
+<br />
+<label for="systemSelect" class="form-label">Generation context</label>
+<br />
+<select data-mdb-select-init @onchange=@SystemSelectionChanged id="systemSelect">
+    <option value="A brief explanation in not more than 100 words">Brief Response</option>
+    <option value="Help me write a Informational Blog.">Informational Blog</option>
+    <option value="Help me write a Informational Email.">Informational Email</option>
+    <option value="Help me write a Informational Paragraph.">Informational Paragraph</option>
+    <option value="Help me write a Professional Blog.">Professional Blog</option>
+    <option value="Help me write a Professional Email.">Professional Email</option>
+    <option value="Help me write a Professional Paragraph">Professional Paragraph</option>
+    <option value="Help me write a to research on the following.">Research</option>
+</select>
+<br />
+@if (!string.IsNullOrEmpty(processingMsg))
+{
+
+    <br />
+    <input class="form-control" type="text" value="@processingMsg" aria-label="readonly input example" readonly>
+}
+
+<br />
+<textarea class="form-control" rows="9" @bind=@UserInput />
+@* <InputTextArea @bind-Value=@UserInput rows="5" @bind:after:"UserInputChanged"/> *@
+<br />
+
+<Button Color="Color.Success" Clicked="@OnSubmitClick">Submit</Button>
+
+
