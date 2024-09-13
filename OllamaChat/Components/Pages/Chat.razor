@@ -14,14 +14,18 @@
 <label for="systemSelect" class="form-label">Generation context</label>
 <br />
 <select data-mdb-select-init @onchange=@SystemSelectionChanged id="systemSelect">
-    <option value="A brief explanation in not more than 100 words">Brief Response</option>
-    <option value="Help me write a Informational Blog.">Informational Blog</option>
-    <option value="Help me write a Informational Email.">Informational Email</option>
-    <option value="Help me write a Informational Paragraph.">Informational Paragraph</option>
-    <option value="Help me write a Professional Blog.">Professional Blog</option>
-    <option value="Help me write a Professional Email.">Professional Email</option>
-    <option value="Help me write a Professional Paragraph">Professional Paragraph</option>
-    <option value="Help me write a to research on the following.">Research</option>
+    <option value="1">Brief Response</option>
+    <option value="2">Bullet points to blog</option>
+    <option value="3">Friendly </option>
+    <option value="4">Informational Blog</option>
+    <option value="5">Informational Email</option>
+    <option value="6">Informational Paragraph</option>
+    <option value="7">Professional Blog</option>
+    <option value="8">Professional Email</option>
+    <option value="9">Professional Paragraph</option>
+    <option value="10">Rephrase </option>
+    <option value="11">Research</option>
+    <option value="12">Shorten</option>
 </select>
 <br />
 @if (!string.IsNullOrEmpty(processingMsg))
@@ -33,9 +37,12 @@
 
 <br />
 <textarea class="form-control" rows="9" @bind=@UserInput />
-@* <InputTextArea @bind-Value=@UserInput rows="5" @bind:after:"UserInputChanged"/> *@
 <br />
+@if (disableSubmit == false)
+{
+    <Button Color="Color.Success" Clicked="@OnSubmitClick">Submit</Button>
+}
 
-<Button Color="Color.Success" Clicked="@OnSubmitClick">Submit</Button>
+
 
 

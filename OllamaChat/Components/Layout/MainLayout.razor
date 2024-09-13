@@ -9,7 +9,7 @@
         @Body
     </div>
     <div class="fixed-bottom">
-        <footer class="blockquote-footer">&copy; <cite title="Source Title"> Sridhar Sathya 2022- <script>document.write(/\d{4}/.exec(Date())[0])</script></cite></footer>
+        <footer class="blockquote-footer">&copy; <cite title="Source Title"> Sridhar Sathya 2022- @GetCurrentYear() </cite></footer>
     </div>
 </div>
 
@@ -18,3 +18,15 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code{
+    private string? currentYear;
+    private string GetCurrentYear()
+    {
+        if (string.IsNullOrWhiteSpace(currentYear))
+        {
+            currentYear = DateTime.Now.Year.ToString();
+        }
+        return currentYear;
+    }
+}
