@@ -21,16 +21,36 @@ public partial class Chat
     protected StringBuilder responseMsg = new();
     protected string responseToDisplay = string.Empty;
     private ChatHistory chatHistory = [];
+    private Dictionary<string, string> systemMessages = [];
+    private bool disableSubmit = false;
 
     protected override void OnInitialized()
     {
         chatHistory = new ChatHistory("A brief explanation in not more than 100 words");
+        systemMessages["1"] = "You are going to answer the question in not more than 100 words";
+        systemMessages["2"] = "You are expected to write a blog based on the items mentioned";
+        systemMessages["3"] = "Change the tone to sound friendly";
+        systemMessages["4"] = "Convert the text given below into a informational blog; you don't " +
+            "have to be too formal or polite; however it will be appreciated";
+        systemMessages["5"] = "Convert the text given below into a informational email; you don't " +
+            "have to be too formal or polite; however it will be appreciated";
+        systemMessages["6"] = "you are going to answer in one  paragraph; " +
+            "please limit the output to one paragraph";
+        systemMessages["7"] = "Convert the text given below to a professional and formal  blog.";
+        systemMessages["8"] = "Convert the text given below to a professional and formal email.";
+        systemMessages["9"] = "please answer in less than one paragraph; " +
+            "please sound professional.";
+        systemMessages["10"] = "rephrase the message to sound more formal and polite";
+        systemMessages["11"] = "Get a detailed report on all things you know about the topic. " +
+            "Present it in a friendly and pleasant format";
+        systemMessages["12"] = "You need to summarize the message that is not more than 150 words";
     }
 
     protected async void OnSubmitClick()
     {
-        if (Kernel is not null && chat is not null)
+        if (Kernel is not null && chat is not null && UserInput != string.Empty)
         {
+            disableSubmit = true;
             chatHistory.AddUserMessage(UserInput);
             responseMsg.AppendLine($">*{UserInput}*\n\n");
             processingMsg = UserInput.Length > 40 ? $"Processing {UserInput[..40]} ..." :
@@ -48,6 +68,7 @@ public partial class Chat
             processingMsg = string.Empty;
             UserInput = string.Empty;
             SystemMsg = savedSystemMsg;
+            disableSubmit = false;
             StateHasChanged();
         }
     }
@@ -57,17 +78,14 @@ public partial class Chat
         var value = e.Value as string;
         if (!string.IsNullOrEmpty(value))
         {
-            if (SystemMsg.Equals(savedSystemMsg) && !string.IsNullOrEmpty(SystemMsg))
+            if (systemMessages[value].Equals(savedSystemMsg) && !string.IsNullOrEmpty(SystemMsg))
             {
                 return;
             }
-            SystemMsg = value;
+            SystemMsg = systemMessages[value];
             chatHistory = new ChatHistory(value);
             chatHistory.Clear();
-            if (UserInput != string.Empty)
-            {
-                savedSystemMsg = value;
-            }
+            savedSystemMsg = SystemMsg;
         }
     }
 }
