@@ -11,10 +11,7 @@
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.6.1" />
     <PackageReference Include="Markdig" Version="0.37.0" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.18.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
+    <PackageReference Include="SimpleFeedReader" Version="1.0.9" />
   </ItemGroup>
 
   <ItemGroup>
